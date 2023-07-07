@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3b00833e.css",
+    "main.js": "/static/js/main.9a966760.js",
+    "static/media/MLB_jersey.jpg": "/static/media/MLB_jersey.6c10356756c7bc970517.jpg",
+    "static/media/MLB.png": "/static/media/MLB.b2219c9ea050a9a852f0.png",
+    "index.html": "/index.html",
+    "main.3b00833e.css.map": "/static/css/main.3b00833e.css.map",
+    "main.9a966760.js.map": "/static/js/main.9a966760.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3b00833e.css",
+    "static/js/main.9a966760.js"
+  ]
+}

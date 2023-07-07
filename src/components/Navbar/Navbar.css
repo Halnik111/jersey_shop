@@ -1,0 +1,23 @@
+
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 10px 10px 5px 10px;
+    background-color: var(--bg);
+}
+
+.menu_box {
+    cursor: pointer;
+    color: white;
+    font-size: 28px;
+}
+
+.navbar_cart {
+    cursor: pointer;
+    color: white;
+    font-size: 28px;
+}

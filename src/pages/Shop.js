@@ -6,7 +6,7 @@ const Shop = ({type}) => {
 
     return (
         <div className={'shop'}>
-            <Card />
+            <Card id={'1'}/>
             <Card />
         </div>
     );

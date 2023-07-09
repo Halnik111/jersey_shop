@@ -2,6 +2,6 @@
 .shop {
     display: grid;
     grid-template-columns: auto auto;
+    gap: 10px 10px;
     flex-wrap: wrap;
-    margin: 0 5px;
 }

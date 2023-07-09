@@ -1,0 +1,23 @@
+
+.footer {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    height: 150px;
+    width: 100%;
+    border-top: 1px solid var(--bgOpposite);
+    padding-top: 10px;
+}
+
+.footer_column {
+    grid-column: span 3;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer_column > li > a:hover {
+    border-bottom: solid 1px var(--bgOpposite);
+}
+
+

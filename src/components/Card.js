@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Jersey from '../images/MLB_jersey-200.jpg';
 import HeartEmpty from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartFilled from '@mui/icons-material/Favorite';
-
 import './Card.css';
 import {Link} from "react-router-dom";
 
-const Card = () => {
+const Card = ({id}) => {
     const [image, setImage] = useState();
 
     useEffect(() => {
@@ -15,7 +14,7 @@ const Card = () => {
 
     return (
         <div className={'card_item'}>
-            <Link  to={{pathname: `/item/test`}} style={{textDecoration:"none"}}>
+            <Link  to={{pathname: `/item/${id}`}} style={{textDecoration:"none"}}>
                 <div className={'card_img'}>
                     <img alt={'jersey img'} className={'card_image'} src={image}/>
                 </div>

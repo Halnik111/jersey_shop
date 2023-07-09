@@ -1,1 +1,1 @@
-Jersey Shop for Tom.
+Jersey shop for Tom

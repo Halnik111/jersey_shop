@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import './App.css';
 import Home from "./pages/Home";
 import NavbarMenu from "./components/Navbar/NavbarMenu";
 import Shop from "./pages/Shop";
 import Item from "./pages/Item";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -17,7 +18,7 @@ const App = () => {
     }
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className={'app'}>
                 <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}/>
                 {menu()}
@@ -36,8 +37,9 @@ const App = () => {
                         </Route>
                     </Routes>
                 </div>
+                <Footer />
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 

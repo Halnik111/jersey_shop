@@ -1,13 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import "./Navbar.css";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Logo from '../../images/MLB.png';
+import NavbarMenu from "./NavbarMenu";
+import NavbarCart from "./NavbarCart";
 
-const Navbar = ({openMenu, setOpenMenu}) => {
+const Navbar = () => {
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openCart, setOpenCart] = useState(false);
+
+    const menu = () => {
+        if (openMenu) {
+            document.body.classList.add('preventScroll');
+            return <NavbarMenu setOpenMenu={setOpenMenu}/>
+        }
+        else {
+            document.body.classList.remove('preventScroll');
+        }
+    };
+
+    const cart = () => {
+        if (openCart) {
+            document.body.classList.add('preventScroll');
+            return <NavbarCart setOpenCart={setOpenCart}/>
+        }
+        else {
+            document.body.classList.remove('preventScroll');
+        }
+    }
+
     return (
         <div className={'navbar'}>
+            {menu()}
+            {cart()}
             <div className={'menu_box'} onClick={() => setOpenMenu(!openMenu)}>
                 <MenuOutlinedIcon style={{fontSize: 'inherit'}}/>
             </div>
@@ -17,7 +44,7 @@ const Navbar = ({openMenu, setOpenMenu}) => {
                 </Link>
             </div>
             <div className={'navbar_cart'} >
-                <ShoppingCartOutlinedIcon style={{fontSize: 'inherit'}}/>
+                <ShoppingCartOutlinedIcon onClick={() => setOpenCart(true)} style={{fontSize: 'inherit'}}/>
             </div>
         </div>
     );

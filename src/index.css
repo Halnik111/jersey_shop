@@ -2,8 +2,11 @@
     --bg: #171717;
     --bgOpposite: whitesmoke;
     --soft: #343434;
+    --hr: grey;
     --text: white;
     --textSoft: white;
+    --greenLight: darkseagreen;
+    --green: darkgreen;
 }
 
 html, body {
@@ -14,6 +17,11 @@ body {
     background-color: var(--bg);
     color: var(--text);
     margin: 0 10px;
+}
+
+.preventScroll {
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 a {

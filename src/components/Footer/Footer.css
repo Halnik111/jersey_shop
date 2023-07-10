@@ -3,7 +3,7 @@
     display: grid;
     grid-column-gap: 10px;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    height: 150px;
+    height: 120px;
     width: 100%;
     border-top: 1px solid var(--bgOpposite);
     padding-top: 10px;

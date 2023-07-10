@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 const NavbarMenu = ({setOpenMenu}) => {
     const navigate = useNavigate();
 
-
     return (
         <div className={'menu'}>
             <div className={'menu_close_button'} onClick={() => setOpenMenu(false)}>X</div>

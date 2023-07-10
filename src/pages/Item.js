@@ -68,7 +68,10 @@ const Item = () => {
                     <div>Nike Arizona Diamondbacks</div>
                     <div>120€</div>
                 </div>
-                <div className={'item_description'}>Insert all description here. Insert all description here. Insert all description here. Insert all description here.</div>
+                <div className={'item_description'}>
+                    Insert all description here. Insert all description here.
+                    Insert all description here. Insert all description here.
+                </div>
 
             </div>
             <div className={'item_buy_config'}>

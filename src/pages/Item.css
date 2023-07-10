@@ -75,7 +75,7 @@
     justify-content: center;
     width: 300px;
     display: flex;
-    background-color: darkseagreen;
+    background-color: var(--greenLight);
     border-radius: 30px;
 }
 

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './NavbarCart.css';
 
 const NavbarCart = ({setOpenCart}) => {
+    const [height, setHeight] = useState(0);
+
+    let resizeWindow = () => {
+        setHeight(window.innerHeight);
+    };
+
+    useEffect(() => {
+        resizeWindow();
+        window.addEventListener("resize", resizeWindow);
+        return () => window.removeEventListener("resize", resizeWindow);
+    }, []);
+
     return (
-        <div className={"cart"}>
+        <div className={"cart"} style={{height: height}}>
             <div className={"cart_header"}>
                 <div>Cart</div>
                 <div className={'cart_close_button'} onClick={() => setOpenCart(false)}>X</div>

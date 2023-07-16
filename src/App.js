@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import './App.css';
@@ -19,9 +19,7 @@ const App = () => {
                         <Route path={"/"}>
                             <Route index element={<Home />} />
                             <Route path={'shop'}>
-                                <Route path={'nfl'} element={<Shop type={'NFL'}/>} />
-                                <Route path={'nhl'} element={<Shop type={'NHL'}/>} />
-                                <Route path={'mlb'} element={<Shop type={'MLB'}/>} />
+                                <Route path={':category'} element={<Shop />} />
                             </Route>
                             <Route path={'item'}>
                                 <Route path={':id'} element={<Item />} />

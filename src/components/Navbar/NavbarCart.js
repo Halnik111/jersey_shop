@@ -21,7 +21,7 @@ const NavbarCart = ({setOpenCart}) => {
                 <div className={'cart_close_button'} onClick={() => setOpenCart(false)}>X</div>
             </div>
             <div className={"cart_items"}>
-
+                <div>Cart's empty..</div>
             </div>
             <div className={"cart_checkout"}>
                 <div className={'cart_summary'}>

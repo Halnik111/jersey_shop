@@ -25,6 +25,10 @@
 
 .cart_items {
     flex: auto;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid var(--hr);
 }
 
@@ -54,10 +58,11 @@
     padding: 10px 0;
     justify-content: center;
     width: 180px;
-    border: 1px solid white;
+    border: 1px solid var(--text);
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .cart_close_button {
-
+    cursor: pointer;
 }

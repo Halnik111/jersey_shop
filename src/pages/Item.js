@@ -1,19 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
-import Jersey from '../images/MLB_jersey.jpg';
 import SelectArrow from '@mui/icons-material/UnfoldMoreOutlined';
 import CheckMark from '@mui/icons-material/DoneOutlined';
 import Cross from '@mui/icons-material/CloseOutlined';
 import './Item.css';
+import {useLocation} from "react-router-dom";
 
 
 const Item = () => {
-    const [image, setImage] = useState();
+    const [item,setItem] = useState({});
     const [sizingToggle, setSizingToggle] = useState(false);
     const [size, setSize] = useState('L');
+    let location = useLocation();
     let sizingRef = useRef();
 
     useEffect(() => {
-        setImage(Jersey);
+        setItem(location.state);
+        loadImages();
+        loadSizingStock();
 
         let handler = (e) => {
             try {
@@ -26,6 +29,14 @@ const Item = () => {
         }
         document.addEventListener("mousedown", handler);
     },[]);
+
+    const loadImages = () => {
+
+    }
+
+    const loadSizingStock = () => {
+
+    }
 
     const sizing = () => {
         if (sizingToggle) {
@@ -55,7 +66,7 @@ const Item = () => {
     return (
         <div className={'item'}>
             <div className={'item_image_wrapper'}>
-                <img alt={'Jersey img'} className={'item_image'} src={image}/>
+                <img alt={'Jersey img'} className={'item_image'} src={item.image}/>
                 <div className={'item_image_slider'}>
                     <div>Pic_1</div>
                     <div>Pic_2</div>
@@ -63,25 +74,35 @@ const Item = () => {
                     <div>Pic_4</div>
                 </div>
             </div>
-            <div className={'item_details'}>
-                <div className={'item_header'}>
-                    <div>Nike Arizona Diamondbacks</div>
-                    <div>120€</div>
-                </div>
-                <div className={'item_description'}>
-                    Insert all description here. Insert all description here.
-                    Insert all description here. Insert all description here.
-                </div>
-
-            </div>
-            <div className={'item_buy_config'}>
-                <div className={'item_config_wrapper'}>
-                    <div className={'item_sizing'} onClick={() => setSizingToggle(!sizingToggle)}>
-                        <div onChange={() => {}}>Size: {size}</div>
-                        {sizing()}
-                        <SelectArrow style={{zIndex: '1'}}/>
+            <div className={'image_details_wrapper'} >
+                <div className={'item_details'}>
+                    <div className={'item_header'}>
+                        <div>{item.name}</div>
+                        <div>{item.price?.$numberDecimal}</div>
                     </div>
-                    <div className={'item_cart'}>Add to cart</div>
+                    <div className={'item_description'}>{item.desc}</div>
+                </div>
+                <div className={'item_buy_config'}>
+                    <div className={'item_config_wrapper'}>
+                        <div className={'item_sizing'} onClick={() => setSizingToggle(!sizingToggle)}>
+                            <div onChange={() => {}}>Size: {size}</div>
+                            {sizing()}
+                            <SelectArrow style={{zIndex: '1'}}/>
+                        </div>
+                        <div className={'item_cart'}>Add to cart</div>
+                    </div>
+                </div>
+                <div className={'item_table'}>
+                    <div className={'item_table_row_1'}>
+                        <div>Category</div>
+                        <div>Team</div>
+                        <div>Player</div>
+                    </div>
+                    <div className={'item_table_row_2'}>
+                        <div>{item.category}</div>
+                        <div>{item.team}</div>
+                        <div>{item.player}</div>
+                    </div>
                 </div>
             </div>
         </div>

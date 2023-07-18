@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/jersey_shop/static/css/main.078cced8.css",
-    "main.js": "/jersey_shop/static/js/main.e8e988c0.js",
+    "main.css": "/jersey_shop/static/css/main.8b0a0402.css",
+    "main.js": "/jersey_shop/static/js/main.a619b796.js",
     "static/media/MLB.png": "/jersey_shop/static/media/MLB.b2219c9ea050a9a852f0.png",
     "index.html": "/jersey_shop/index.html",
-    "main.078cced8.css.map": "/jersey_shop/static/css/main.078cced8.css.map",
-    "main.e8e988c0.js.map": "/jersey_shop/static/js/main.e8e988c0.js.map"
+    "main.8b0a0402.css.map": "/jersey_shop/static/css/main.8b0a0402.css.map",
+    "main.a619b796.js.map": "/jersey_shop/static/js/main.a619b796.js.map"
   },
   "entrypoints": [
-    "static/css/main.078cced8.css",
-    "static/js/main.e8e988c0.js"
+    "static/css/main.8b0a0402.css",
+    "static/js/main.a619b796.js"
   ]
 }

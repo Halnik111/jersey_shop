@@ -5,3 +5,9 @@
     gap: 10px 10px;
     flex-wrap: wrap;
 }
+
+.item_0_items_found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

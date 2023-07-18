@@ -8,15 +8,16 @@ import {useLocation} from "react-router-dom";
 
 const Item = () => {
     const [item,setItem] = useState({});
+    const [inventory, setInventory] = useState({});
     const [sizingToggle, setSizingToggle] = useState(false);
-    const [size, setSize] = useState('L');
+    const [size, setSize] = useState('');
     let location = useLocation();
     let sizingRef = useRef();
 
     useEffect(() => {
         setItem(location.state);
+        setInventory(location.state.stock[0].inventory);
         loadImages();
-        loadSizingStock();
 
         let handler = (e) => {
             try {
@@ -34,8 +35,39 @@ const Item = () => {
 
     }
 
-    const loadSizingStock = () => {
+    const selectSize = (e) => {
+        setSize(e);
+        setSizingToggle(!sizingToggle);
+    }
 
+    const buy_config = () => {
+        if (item.stock) {
+            if (item.stock[0].total > 0) {
+                return <div className={'item_buy_config'}>
+                    <div className={'item_config_wrapper'}>
+                        <div className={'item_sizing_wrapper'}>
+                            <div className={'item_sizing'} onClick={() => setSizingToggle(!sizingToggle)}>
+                                <div>Size: {size}</div>
+                                <SelectArrow style={{zIndex: '1'}}/>
+                            </div>
+                            {sizing()}
+                        </div>
+                        <div className={'item_cart'}>{'Add to cart'}</div>
+                    </div>
+                </div>
+            }
+            else {
+                return <div className={'item_buy_config'}>
+                    <div className={'item_config_wrapper item_config_flag_red'}>
+                        <div className={'item_sizing_wrapper'}>
+                            <div>Size: {size}</div>
+                            <SelectArrow style={{zIndex: '1'}}/>
+                        </div>
+                        <div className={'item_cart item_cart_flag_red'}>{'Out of stock'}</div>
+                    </div>
+                </div>
+            }
+        }
     }
 
     const sizing = () => {
@@ -43,20 +75,61 @@ const Item = () => {
             return (
                 <div className={'item_sizing_expandable_wrapper'} ref={sizingRef}>
                     <div className={'item_sizing_expandable'}>
-                        <div className={'item_checkmarks'}>
-                            <CheckMark className={'checkmark'} onClick={() => {setSize('S') }}/>
-                            <CheckMark className={'checkmark'} onClick={() => {setSize('M') }}/>
-                            <CheckMark className={'checkmark'} onClick={() => {setSize('L') }}/>
-                            <CheckMark className={'checkmark'} onClick={() => {setSize('XL') }}/>
-                            <CheckMark className={'checkmark'} onClick={() => {setSize('XXL') }}/>
-                        </div>
-                        <div className={'item_sizes'}>
-                            <div className={'size'} onClick={() => {setSize('S') }}>S</div>
-                            <div className={'size'} onClick={() => {setSize('M') }}>M</div>
-                            <div className={'size'} onClick={() => {setSize('L') }}>L</div>
-                            <div className={'size'} onClick={() => {setSize('XL') }}>XL</div>
-                            <div className={'size'} onClick={() => {setSize('XXL') }}>XXL</div>
-                        </div>
+                        {inventory.S > 0 ?
+                            <div className={'item_sizing_row'} onClick={() => selectSize('S')}>
+                                <CheckMark className={'checkmark'}/>
+                                <div className={'size'}>S</div>
+                            </div>
+                            :
+                            <div className={'item_sizing_row item_flag_red'}>
+                                <Cross className={'checkmark'} />
+                                <div className={'size'}>S</div>
+                            </div>
+                        }
+                        {inventory.M > 0 ?
+                            <div className={'item_sizing_row'} onClick={() => selectSize('M')}>
+                                <CheckMark className={'checkmark'}/>
+                                <div className={'size'}>M</div>
+                            </div>
+                            :
+                            <div className={'item_sizing_row item_flag_red'}>
+                                <Cross className={'checkmark'} />
+                                <div className={'size'}>M</div>
+                            </div>
+                        }
+                        {inventory.L > 0 ?
+                            <div className={'item_sizing_row'} onClick={() => selectSize('L')}>
+                                <CheckMark className={'checkmark'}/>
+                                <div className={'size'}>L</div>
+                            </div>
+                            :
+                            <div className={'item_sizing_row item_flag_red'}>
+                                <Cross className={'checkmark'} />
+                                <div className={'size'}>L</div>
+                            </div>
+                        }
+                        {inventory.XL > 0 ?
+                            <div className={'item_sizing_row'} onClick={() => selectSize('XL')}>
+                                <CheckMark className={'checkmark'}/>
+                                <div className={'size'}>XL</div>
+                            </div>
+                            :
+                            <div className={'item_sizing_row item_flag_red'}>
+                                <Cross className={'checkmark'} />
+                                <div className={'size'}>XL</div>
+                            </div>
+                        }
+                        {inventory.XXL > 0 ?
+                            <div className={'item_sizing_row'} onClick={() => selectSize('XXL')}>
+                                <CheckMark className={'checkmark'}/>
+                                <div className={'size'}>XXL</div>
+                            </div>
+                            :
+                            <div className={'item_sizing_row item_flag_red'}>
+                                <Cross className={'checkmark'} />
+                                <div className={'size'}>XXL</div>
+                            </div>
+                        }
                     </div>
                 </div>
             )
@@ -82,16 +155,7 @@ const Item = () => {
                     </div>
                     <div className={'item_description'}>{item.desc}</div>
                 </div>
-                <div className={'item_buy_config'}>
-                    <div className={'item_config_wrapper'}>
-                        <div className={'item_sizing'} onClick={() => setSizingToggle(!sizingToggle)}>
-                            <div onChange={() => {}}>Size: {size}</div>
-                            {sizing()}
-                            <SelectArrow style={{zIndex: '1'}}/>
-                        </div>
-                        <div className={'item_cart'}>Add to cart</div>
-                    </div>
-                </div>
+                {buy_config()}
                 <div className={'item_table'}>
                     <div className={'item_table_row_1'}>
                         <div>Category</div>

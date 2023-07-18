@@ -51,3 +51,8 @@
 .card_item_price {
 
 }
+
+.card_item_out_of_stock {
+    font-size: 13px;
+    color: indianred;
+}

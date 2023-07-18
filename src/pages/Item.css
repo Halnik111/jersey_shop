@@ -84,12 +84,20 @@
     display: flex;
     background-color: var(--greenLight);
     border-radius: 30px;
+    cursor: pointer;
+}
+
+.item_sizing_wrapper {
+    width: 40%;
+    height: 80px;
 }
 
 .item_sizing {
-    width: 40%;
-    height: 80px;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .item_sizing :nth-child(1) {
@@ -100,7 +108,15 @@
     width: 60%;
     background-color: darkgreen;
     border-radius: 30px;
-    cursor: pointer;
+}
+
+.item_cart_flag_red {
+    background-color: salmon;
+}
+
+.item_config_flag_red {
+    background-color: gray;
+    cursor: default;
 }
 
 .item_sizing_expandable_wrapper {
@@ -113,38 +129,40 @@
 
 .item_sizing_expandable {
     display: flex;
-    padding-bottom: 30px;
+    flex-direction: column;
+    padding: 10px 15px 30px 15px;
+    box-sizing: border-box;
     width: 100%;
     background-color: darkseagreen;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.item_sizing_expandable > div {
-    width: 100%;
+.item_sizing_row {
     display: flex;
-    flex-direction: column;
-}
-
-.item_checkmarks {
-    padding-left: 15px;
+    justify-content: space-around;
+    padding-top: 10px;
+    border-bottom: 1px solid var(--text)
 }
 
 .item_sizes {
     padding-right: 15px;
 }
 
+.item_flag_red {
+    color: darkred;
+    border-color: darkred;
+    cursor: default;
+}
+
 .checkmark {
+    width: 50% !important;
     font-size: 19px !important;
-    width: 100% !important;
-    border-bottom: 1px solid var(--text);
-    padding-top: 12px;
 }
 
 .size {
-    font-size: 16px;
-    border-bottom: 1px solid var(--text);
-    padding-top: 12px;
+    width: 50%;
+    padding-right: 10px;
 }
 
 .item_table {

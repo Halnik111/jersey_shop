@@ -16,7 +16,12 @@ const Card = ({item}) => {
             <div className={'card_details'}>
                 <div className={'card_title'}>{item.name}</div>
                 <div className={'card_inner_wrapper'}>
-                    <div className={'card_item_price'}>{item.price?.$numberDecimal}</div>
+                    {
+                        item.stock[0].total > 0 ?
+                            <div className={'card_item_price'}>{item.price?.$numberDecimal}</div>
+                            :
+                            <div className={'card_item_out_of_stock'}>Out of Stock</div>
+                    }
                     <div className={'card_item_save'}><HeartEmpty style={{fontSize: 'inherit'}}/></div>
                 </div>
             </div>

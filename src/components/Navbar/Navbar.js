@@ -5,11 +5,13 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Logo from '../../images/MLB.png';
 import NavbarMenu from "./NavbarMenu";
-import NavbarCart from "./NavbarCart";
+import NavbarCart from "./Cart/NavbarCart";
+import {useSelector} from "react-redux";
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const [openCart, setOpenCart] = useState(false);
+    const { items } = useSelector(state => state.jersey_reducer)
 
     const menu = () => {
         if (openMenu) {
@@ -44,7 +46,14 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className={'navbar_cart'} >
-                <ShoppingCartOutlinedIcon onClick={() => setOpenCart(true)} style={{fontSize: 'inherit'}}/>
+                {items.length > 0 ?
+                    <div>
+                        <div className={'navbar_cart_indicator'}></div>
+                        <ShoppingCartOutlinedIcon onClick={() => setOpenCart(true)} style={{fontSize: 'inherit'}}/>
+                    </div>
+                    :
+                    <ShoppingCartOutlinedIcon onClick={() => setOpenCart(true)} style={{fontSize: 'inherit'}}/>
+                }
             </div>
         </div>
     );

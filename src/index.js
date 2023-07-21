@@ -2,15 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-      <style>
-          @import url('https://fonts.googleapis.com/css2?family=League+Script&family=Rubik:wght@300;400;500&display=swap');
-      </style>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=League+Script&family=Rubik:wght@300;400;500&display=swap');
+            </style>
+        </Provider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -13,9 +13,8 @@ const Shop = () => {
     }, [path]);
 
     const loadProducts = async () => {
-        await axios.get(`https://jersey-shop-api.azurewebsites.net/products/category/${path.toUpperCase()}`)
+        await axios.get(`http://localhost:8080/products/category/${path.toUpperCase()}`)
             .then(res => {setProducts(res.data); return res.data})
-                   .then(res =>  console.log(res))
             .catch(console.log);
     }
 

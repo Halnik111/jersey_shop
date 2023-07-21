@@ -4,6 +4,8 @@ import CheckMark from '@mui/icons-material/DoneOutlined';
 import Cross from '@mui/icons-material/CloseOutlined';
 import './Item.css';
 import {useLocation} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {addCartItem, incCartItemQuantity} from "../redux/itemSlice";
 
 
 const Item = () => {
@@ -11,8 +13,11 @@ const Item = () => {
     const [inventory, setInventory] = useState({});
     const [sizingToggle, setSizingToggle] = useState(false);
     const [size, setSize] = useState('');
+    const dispatch = useDispatch();
+    const {items} = useSelector(state => state.jersey_reducer);
     let location = useLocation();
     let sizingRef = useRef();
+    let cartRef = useRef();
 
     useEffect(() => {
         setItem(location.state);
@@ -31,6 +36,10 @@ const Item = () => {
         document.addEventListener("mousedown", handler);
     },[]);
 
+    useEffect(() => {
+        cartRef.current?.classList.remove("display_1");
+    }, [size])
+
     const loadImages = () => {
 
     }
@@ -39,6 +48,37 @@ const Item = () => {
         setSize(e);
         setSizingToggle(!sizingToggle);
     }
+
+    const addItemToCart = () => {
+        if (size === '') {
+            cartRef.current.classList.add("display_1");
+        }
+        else {
+            const duplicate = items.find(x => x.id === item._id + "_" + size);
+            if (duplicate) {
+                console.log(duplicate)
+                dispatch(incCartItemQuantity(duplicate.id))
+            }
+            else {
+                const cartItem = {
+                    id: item._id + "_" + size,
+                    name: item.name,
+                    price: item.price,
+                    image: item.image,
+                    quantity: 1,
+                    size: size,
+                }
+                dispatch(addCartItem(cartItem));
+            }
+        }
+    }
+
+    const sizeError = () => {
+        return (
+            <div ref={cartRef} className={'item_sizing_error'}>Select a size first</div>
+        )
+    }
+
 
     const buy_config = () => {
         if (item.stock) {
@@ -52,7 +92,10 @@ const Item = () => {
                             </div>
                             {sizing()}
                         </div>
-                        <div className={'item_cart'}>{'Add to cart'}</div>
+                        <div className={'item_cart'} onClick={() => {addItemToCart()}}>
+                            {sizeError()}
+                            Add to cart
+                        </div>
                     </div>
                 </div>
             }

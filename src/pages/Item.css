@@ -110,6 +110,14 @@
     border-radius: 30px;
 }
 
+.item_sizing_error {
+    display: none;
+    position: absolute;
+    margin-bottom: 60px;
+    font-size: 14px;
+    color: salmon;
+}
+
 .item_cart_flag_red {
     background-color: salmon;
 }
@@ -188,4 +196,8 @@
 .item_table > div > div {
     padding: 3px 10px;
     border-bottom: 1px solid var(--text);
+}
+
+.display_1 {
+    display: block;
 }
